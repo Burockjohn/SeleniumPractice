@@ -78,7 +78,7 @@ public class HardSoftAssertion  {
         String actualResulText = resultText.getText();
         String expectedResultText = "You logged into a secure area!!!";
 
-        softAssert.assertTrue(actualResulText.contains(expectedResultText));
+        softAssert.assertTrue(actualResulText.contains(expectedResultText), "second assertion");
 
         softAssert.assertAll();
 
