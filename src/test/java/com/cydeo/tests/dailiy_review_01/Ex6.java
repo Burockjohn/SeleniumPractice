@@ -99,7 +99,7 @@ public class Ex6 {
         alert.accept();
 
         String actual = Driver.getDriver().findElement(By.id("promptResult")).getText();
-        Assert.assertEquals("You entered " + sendItem, actual);
+        Assert.assertEquals(actual, "You entered " + sendItem);
 
         Driver.closeDriver();
 
