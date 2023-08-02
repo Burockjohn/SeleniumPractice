@@ -28,10 +28,10 @@ public class Ex10 {
         Driver.closeDriver();
     }
 
-    AutoCompletePage autoCompletePage = new AutoCompletePage();
 
     @Test(priority = 1)
     public void verifyCountriesStartWithA() {
+        AutoCompletePage autoCompletePage = new AutoCompletePage();
         autoCompletePage.countryName.sendKeys("A");
         BrowserUtils.sleep(1);
 
@@ -64,6 +64,7 @@ public class Ex10 {
     //Challenge (You can find and print the count of all countries)
     @Test(priority = 2)
     public void countAllCountries() {
+        AutoCompletePage autoCompletePage = new AutoCompletePage();
 
         int countOfAllCountries = 0;
         for (char i = 'A'; i <= 'Z'; i++) {
