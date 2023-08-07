@@ -4,6 +4,7 @@ import com.cydeo.pages.DragAndDrop;
 import com.cydeo.tests.utilities.BrowserUtils;
 import com.cydeo.tests.utilities.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,33 +31,79 @@ public class Ex15 {
         //Move to the green circle into the box
         //Verify that the circles are in the order you moved them
 
-//        for (int i = 0; i < dragAndDrop.draggableCircles.size(); i++) {
-//            System.out.println(dragAndDrop.draggableCircles.get(i).getAttribute("class"));
-//        }
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("function createEvent(typeOfEvent) {\n" + "var event =document.createEvent(\"CustomEvent\");\n"
+                + "event.initCustomEvent(typeOfEvent,true, true, null);\n" + "event.dataTransfer = {\n" + "data: {},\n"
+                + "setData: function (key, value) {\n" + "this.data[key] = value;\n" + "},\n"
+                + "getData: function (key) {\n" + "return this.data[key];\n" + "}\n" + "};\n" + "return event;\n"
+                + "}\n" + "\n" + "function dispatchEvent(element, event,transferData) {\n"
+                + "if (transferData !== undefined) {\n" + "event.dataTransfer = transferData;\n" + "}\n"
+                + "if (element.dispatchEvent) {\n" + "element.dispatchEvent(event);\n"
+                + "} else if (element.fireEvent) {\n" + "element.fireEvent(\"on\" + event.type, event);\n" + "}\n"
+                + "}\n" + "\n" + "function simulateHTML5DragAndDrop(element, destination) {\n"
+                + "var dragStartEvent =createEvent('dragstart');\n" + "dispatchEvent(element, dragStartEvent);\n"
+                + "var dropEvent = createEvent('drop');\n"
+                + "dispatchEvent(destination, dropEvent,dragStartEvent.dataTransfer);\n"
+                + "var dragEndEvent = createEvent('dragend');\n"
+                + "dispatchEvent(element, dragEndEvent,dropEvent.dataTransfer);\n" + "}\n" + "\n"
+                + "var source = arguments[0];\n" + "var destination = arguments[1];\n"
+                + "simulateHTML5DragAndDrop(source,destination);", dragAndDrop.red, dragAndDrop.targetPlace);
 
-        List<WebElement> draggables = dragAndDrop.draggableCircles;
 
-        Actions actions = new Actions(Driver.getDriver());
-        for (int i = 0; i < draggables.size(); i++) {
-            actions.dragAndDrop(draggables.get(i), dragAndDrop.targetPlace).perform();
-            BrowserUtils.sleep(1);
-            //System.out.println(draggables.get(i).getAttribute("class"));
-            //System.out.println(draggables.size());
-        }
+        js.executeScript("function createEvent(typeOfEvent) {\n" + "var event =document.createEvent(\"CustomEvent\");\n"
+                + "event.initCustomEvent(typeOfEvent,true, true, null);\n" + "event.dataTransfer = {\n" + "data: {},\n"
+                + "setData: function (key, value) {\n" + "this.data[key] = value;\n" + "},\n"
+                + "getData: function (key) {\n" + "return this.data[key];\n" + "}\n" + "};\n" + "return event;\n"
+                + "}\n" + "\n" + "function dispatchEvent(element, event,transferData) {\n"
+                + "if (transferData !== undefined) {\n" + "event.dataTransfer = transferData;\n" + "}\n"
+                + "if (element.dispatchEvent) {\n" + "element.dispatchEvent(event);\n"
+                + "} else if (element.fireEvent) {\n" + "element.fireEvent(\"on\" + event.type, event);\n" + "}\n"
+                + "}\n" + "\n" + "function simulateHTML5DragAndDrop(element, destination) {\n"
+                + "var dragStartEvent =createEvent('dragstart');\n" + "dispatchEvent(element, dragStartEvent);\n"
+                + "var dropEvent = createEvent('drop');\n"
+                + "dispatchEvent(destination, dropEvent,dragStartEvent.dataTransfer);\n"
+                + "var dragEndEvent = createEvent('dragend');\n"
+                + "dispatchEvent(element, dragEndEvent,dropEvent.dataTransfer);\n" + "}\n" + "\n"
+                + "var source = arguments[0];\n" + "var destination = arguments[1];\n"
+                + "simulateHTML5DragAndDrop(source,destination);", dragAndDrop.green, dragAndDrop.targetPlace);
+        BrowserUtils.sleep(2);
 
-        //System.out.println("dragAndDrop.coloursAfterDragging.size() = " + dragAndDrop.coloursAfterDragging.size());
+        js.executeScript("function createEvent(typeOfEvent) {\n" + "var event =document.createEvent(\"CustomEvent\");\n"
+                + "event.initCustomEvent(typeOfEvent,true, true, null);\n" + "event.dataTransfer = {\n" + "data: {},\n"
+                + "setData: function (key, value) {\n" + "this.data[key] = value;\n" + "},\n"
+                + "getData: function (key) {\n" + "return this.data[key];\n" + "}\n" + "};\n" + "return event;\n"
+                + "}\n" + "\n" + "function dispatchEvent(element, event,transferData) {\n"
+                + "if (transferData !== undefined) {\n" + "event.dataTransfer = transferData;\n" + "}\n"
+                + "if (element.dispatchEvent) {\n" + "element.dispatchEvent(event);\n"
+                + "} else if (element.fireEvent) {\n" + "element.fireEvent(\"on\" + event.type, event);\n" + "}\n"
+                + "}\n" + "\n" + "function simulateHTML5DragAndDrop(element, destination) {\n"
+                + "var dragStartEvent =createEvent('dragstart');\n" + "dispatchEvent(element, dragStartEvent);\n"
+                + "var dropEvent = createEvent('drop');\n"
+                + "dispatchEvent(destination, dropEvent,dragStartEvent.dataTransfer);\n"
+                + "var dragEndEvent = createEvent('dragend');\n"
+                + "dispatchEvent(element, dragEndEvent,dropEvent.dataTransfer);\n" + "}\n" + "\n"
+                + "var source = arguments[0];\n" + "var destination = arguments[1];\n"
+                + "simulateHTML5DragAndDrop(source,destination);", dragAndDrop.blue, dragAndDrop.targetPlace);
+        BrowserUtils.sleep(2);
 
-        for (WebElement webElement : dragAndDrop.coloursAfterDragging) {
-            webElement.getAttribute("class");
-        }
+        //Verify that the colors are seen in the order you moved them
+        List<WebElement> movedList = dragAndDrop.coloursAfterDragging;
 
-//        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.invisibilityOf(Driver.getDriver().findElement(By.xpath("//div[@id='target']/div[3]"))));
+        if (movedList.size() == 3) {
 
-        for (int i = 0; i < dragAndDrop.coloursAfterDragging.size(); i++) {
-            Assert.assertEquals(dragAndDrop.coloursAfterDragging.get(i).getAttribute("class"), draggables.get(i).getAttribute("class"));
-            //System.out.println(draggables.size());
-            //System.out.println(draggables.get(i).getAttribute("class"));
+            String firstColor = movedList.get(0).getAttribute("class");
+            String secondColor = movedList.get(1).getAttribute("class");
+            String thirdColor = movedList.get(2).getAttribute("class");
+
+            //red,blue,green
+
+            Assert.assertEquals(firstColor, "red");
+            Assert.assertEquals(secondColor, "green");
+            Assert.assertEquals(thirdColor, "blue");
+
+        } else {
+            System.out.println(movedList.size());
+            Assert.fail("You didn't move all elements");
         }
 
         Driver.closeDriver();

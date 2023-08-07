@@ -13,8 +13,14 @@ public class DragAndDrop {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath = "//div[@id='source']/div")
-    public List<WebElement> draggableCircles;
+    @FindBy(css = "div.red")
+    public WebElement red;
+
+    @FindBy(css = "div.green")
+    public WebElement green;
+
+    @FindBy(css = "div.blue")
+    public WebElement blue;
 
     @FindBy(id = "target")
     public WebElement targetPlace;
