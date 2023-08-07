@@ -1,7 +1,6 @@
 package com.cydeo.tests.homework_week02;
 
 import com.cydeo.tests.utilities.WebDriverFactory;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
